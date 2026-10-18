@@ -1,0 +1,16 @@
+[Unit]
+Description=Move the physical uplink into a private network namespace
+Documentation=https://github.com/coexacx/singbox-netns-isolated
+DefaultDependencies=no
+After=local-fs.target systemd-udev-trigger.service systemd-resolved.service
+Before=network-pre.target NetworkManager.service systemd-networkd.service networking.service ssh.service sshd.service sing-box.service
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 /usr/local/lib/singbox-manager/network_isolation.py boot
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target
