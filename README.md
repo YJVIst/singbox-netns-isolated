@@ -51,6 +51,8 @@ ip netns exec sb-uplink ip -br link
 
 节点离线、无法访问 GitHub 或不便打开管理菜单时，可直接使用本机 systemd 命令关闭代理并恢复直连。完整的离线应急步骤、隔离服务说明和网卡恢复命令见[常用命令与离线应急恢复](docs/常用命令与离线应急恢复.md)。
 
+需要在 Debian 服务器上安装 GNOME 并配合物理网卡隔离使用时，见[Debian GNOME 桌面安装与隔离启用教程](docs/Debian-GNOME桌面安装与隔离启用.md)。
+
 ## 仓库结构
 
 - `singbox.sh`：菜单入口、管理器安装器。
