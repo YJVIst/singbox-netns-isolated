@@ -56,6 +56,8 @@ systemctl status singbox-manager-telegram.timer
 journalctl -u singbox-manager-telegram.service -n 50 --no-pager
 ```
 
+若节点离线导致无法拉取仓库脚本，可直接通过 systemd 在本机关闭 sing-box 和 Telegram 定时监测；恢复直连、重新启用网卡隔离或将物理网卡恢复到主机的步骤见[常用命令与离线应急恢复](../docs/常用命令与离线应急恢复.md)。这类命令无需访问 GitHub。
+
 运行中的 sing-box 会在 `127.0.0.1:18081` 提供仅本机可访问的 SOCKS 检测入口；菜单在切换后和手动检测时通过此入口依次查询三个独立的 IP 服务。
 
 默认直连 DNS 为 `1.1.1.1`，可在对应节点资料中修改。WireGuard 默认隧道 DNS 是原模板中的 Surfshark 地址；使用其他提供商时请在菜单 4 修改。分流规则来自原始三个模板，目标站点走选定节点，其他流量直连。程序自带加密 DNS 或隐藏域名时，匹配取决于 IP 规则与协议嗅探。
